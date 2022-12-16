@@ -11,7 +11,7 @@
       stockSymbolForm.value == undefined || stockSymbolForm.invalid
     "
     (myClick)="
-      this.stockService.searchStockByStockSymbol(stockSymbolForm.value)
+      this.stockService.searchStockByStockSymbol(stockSymbolForm.value!)
     "
   ></app-stock-track-button>
 </mat-card>

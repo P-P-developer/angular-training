@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { UntypedFormControl, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-form-field',
@@ -7,9 +7,9 @@ import { UntypedFormControl, Validators } from '@angular/forms';
   styleUrls: ['./stock-form-field.component.scss'],
 })
 export class StockFormFieldComponent {
-  @Output() onStockSymbolFormControlChange = new EventEmitter<UntypedFormControl>();
+  @Output() onStockSymbolFormControlChange = new EventEmitter<FormControl>();
 
-  stockSymbolFormControl = new UntypedFormControl(undefined, [
+  stockSymbolFormControl = new FormControl(undefined, [
     Validators.required,
     Validators.minLength(1),
     Validators.maxLength(5),

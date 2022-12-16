@@ -1,6 +1,6 @@
 import { StockService } from '@shared/services/stock.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-enter-card',
@@ -11,11 +11,11 @@ import { UntypedFormControl } from '@angular/forms';
 export class StockEnterCardComponent {
   title = 'stock tracker';
   subtitle = 'Enter the symbol of a stock to track (i.e. APPL, TSLA, GOOGL)';
-  stockSymbolForm = new UntypedFormControl(undefined);
+  stockSymbolForm = new FormControl(undefined);
 
   constructor(public stockService: StockService) {}
 
-  receiveFormControl(formControl: UntypedFormControl) {
+  receiveFormControl(formControl: FormControl) {
     this.stockSymbolForm = formControl;
   }
 }

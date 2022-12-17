@@ -1,4 +1,3 @@
-import { LocalStorageKeys } from '@shared/models/localStorageKeys';
 import { AssetService } from '@shared/services/asset.service';
 import { QuoteService } from '@shared/services/quote.service';
 import { CompanyDetails } from '@shared/models/companyDetails';
@@ -16,13 +15,7 @@ export class StockSearchResultsComponent {
     public assetService: AssetService,
     private _stockService: StockService
   ) {
-    const stockSymbolList: string[] = JSON.parse(
-      localStorage.getItem(LocalStorageKeys.stockSymbolList) ?? ''
-    );
-
-    stockSymbolList.forEach((stockSymbol) =>
-      this._stockService.searchStockByStockSymbol(stockSymbol)
-    );
+    this._stockService.loadStockDataByStockSymbolsInLocalStorage();
   }
 
   removeStockFromList(stockSymbol: string): void {
@@ -30,6 +23,6 @@ export class StockSearchResultsComponent {
   }
 
   trackByFn(index: number, item: CompanyDetails): string {
-    return item.symbol; // unique id corresponding to the item
+    return item.symbol; // unique value corresponding to the item
   }
 }

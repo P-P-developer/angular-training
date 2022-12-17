@@ -13,15 +13,13 @@ export class StockService {
     private _assetService: AssetService
   ) {}
 
-  removeStockByStockSymbol(stockSymbol: string): void {
-    this._assetService.removeAssetByStockSymbol(stockSymbol);
-    this._quoteService.removeQuoteByStockSymbol(stockSymbol);
-    this.stockSymbolList = this.stockSymbolList.filter(
-      (stockSymbolItem) => stockSymbolItem !== stockSymbol
+  loadStockDataByStockSymbolsInLocalStorage(): void {
+    const stockSymbolList: string[] = JSON.parse(
+      localStorage.getItem(LocalStorageKeys.stockSymbolList) ?? ''
     );
-    localStorage.setItem(
-      LocalStorageKeys.stockSymbolList,
-      JSON.stringify(this.stockSymbolList)
+
+    stockSymbolList.forEach((stockSymbol) =>
+      this.searchStockByStockSymbol(stockSymbol)
     );
   }
 
@@ -44,6 +42,18 @@ export class StockService {
 
     // load quote for current stock symbol
     this._quoteService.loadQuoteForStockSymbol(stockSymbol);
+  }
+
+  removeStockByStockSymbol(stockSymbol: string): void {
+    this._assetService.removeAssetByStockSymbol(stockSymbol);
+    this._quoteService.removeQuoteByStockSymbol(stockSymbol);
+    this.stockSymbolList = this.stockSymbolList.filter(
+      (stockSymbolItem) => stockSymbolItem !== stockSymbol
+    );
+    localStorage.setItem(
+      LocalStorageKeys.stockSymbolList,
+      JSON.stringify(this.stockSymbolList)
+    );
   }
 
   private addStockSymbolToLocalStorage(stockSymbol: string): void {

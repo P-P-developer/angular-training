@@ -1,4 +1,6 @@
-import { CompanyDetails } from './../../shared/models/companyDetails';
+import { AssetService } from './../../shared/services/asset.service';
+import { QuoteService } from '@shared/services/quote.service';
+import { CompanyDetails } from '@shared/models/companyDetails';
 import { Component } from '@angular/core';
 import { StockService } from '@shared/services/stock.service';
 
@@ -8,18 +10,22 @@ import { StockService } from '@shared/services/stock.service';
   styleUrls: ['./stock-search-results.component.scss'],
 })
 export class StockSearchResultsComponent {
-  constructor(public stockService: StockService) {
+  constructor(
+    public quoteService: QuoteService,
+    public assetService: AssetService,
+    private _stockService: StockService
+  ) {
     const stockSymbolList: string[] = JSON.parse(
       localStorage.getItem('stockSymbolList') ?? ''
     );
 
     stockSymbolList.forEach((stockSymbol) =>
-      this.stockService.searchStockByStockSymbol(stockSymbol)
+      this._stockService.searchStockByStockSymbol(stockSymbol)
     );
   }
 
   removeStockFromList(stockSymbol: string): void {
-    this.stockService.removeStockByStockSymbol(stockSymbol);
+    this._stockService.removeStockByStockSymbol(stockSymbol);
   }
 
   trackByFn(index: number, item: CompanyDetails): string {

@@ -1,7 +1,7 @@
-<div *ngFor="let asset of stockService.assets$ | async; trackBy: trackByFn">
+<div *ngFor="let asset of assetService.assets$ | async; trackBy: trackByFn">
   <app-stock-search-result-card
     [companyDetails]="asset"
-    [companyQuote]="stockService.getQuoteByStockSymbol(asset.symbol)"
+    [companyQuote]="quoteService.getQuoteByStockSymbol(asset.symbol)"
     (myClick)="removeStockFromList(asset.symbol)"
   ></app-stock-search-result-card>
 </div>

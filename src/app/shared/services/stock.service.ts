@@ -1,45 +1,20 @@
-import { CompanyQuote } from './../models/companyquote';
-import { CompanyDetails } from './../models/companyDetails';
-import { FinnhubService } from './finnhub.service';
+import { AssetService } from './asset.service';
+import { QuoteService } from './quote.service';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StockService {
   private stockSymbolList: string[] = [];
-  constructor(private _finnHubService: FinnhubService) {
-    this._assets$ = new BehaviorSubject<CompanyDetails[]>([]);
-    this._quotes$ = new BehaviorSubject<CompanyQuote[]>([]);
-  }
-
-  private _assets$: BehaviorSubject<CompanyDetails[]>;
-  public get assets$(): Observable<CompanyDetails[]> {
-    return this._assets$.asObservable();
-  }
-
-  private _quotes$: BehaviorSubject<CompanyQuote[]>;
-  public get quotes$(): Observable<CompanyQuote[]> {
-    return this._quotes$.asObservable();
-  }
-
-  getQuoteByStockSymbol(stockSymbol: string): CompanyQuote | undefined {
-    return this._quotes$.value.find(
-      (quote) => quote.stockSymbol === stockSymbol
-    );
-  }
+  constructor(
+    private _quoteService: QuoteService,
+    private _assetService: AssetService
+  ) {}
 
   removeStockByStockSymbol(stockSymbol: string): void {
-    this._assets$.next(
-      this._assets$.getValue().filter((asset) => asset.symbol !== stockSymbol)
-    );
-    this._quotes$.next(
-      this._quotes$
-        .getValue()
-        .filter((quote) => quote.stockSymbol !== stockSymbol)
-    );
+    this._assetService.removeAssetByStockSymbol(stockSymbol);
+    this._quoteService.removeQuoteByStockSymbol(stockSymbol);
     this.stockSymbolList = this.stockSymbolList.filter(
       (stockSymbolItem) => stockSymbolItem !== stockSymbol
     );
@@ -51,19 +26,23 @@ export class StockService {
 
   searchStockByStockSymbol(stockSymbol: string): void {
     stockSymbol = stockSymbol.toUpperCase();
+
     // If the current stock symbol was already added then skip this part
-    if (
-      this.stockSymbolList.find(
-        (stockSymbolItem) => stockSymbolItem === stockSymbol
-      ) !== undefined
-    ) {
+    if (this.stockSymbolAlreadyExistInList(stockSymbol)) {
       return;
     }
 
-    this.stockSymbolList.push(stockSymbol);
+    // Push new stock symbol to the list
+    this.addNewStockSymbolToList(stockSymbol);
+
+    // Add stock symbol to the local storage
     this.addStockSymbolToLocalStorage(stockSymbol);
-    this.loadAssetsForStockSymbol(stockSymbol);
-    this.loadQuoteForStockSymbol(stockSymbol);
+
+    // load asset for current stock symbol
+    this._assetService.loadAssetForStockSymbol(stockSymbol);
+
+    // load quote for current stock symbol
+    this._quoteService.loadQuoteForStockSymbol(stockSymbol);
   }
 
   private addStockSymbolToLocalStorage(stockSymbol: string): void {
@@ -74,30 +53,15 @@ export class StockService {
     );
   }
 
-  private loadAssetsForStockSymbol(stockSymbol: string): void {
-    this._finnHubService
-      .searchAssets(stockSymbol)
-      .pipe(take(1))
-      .subscribe((assets) => {
-        const assetToShow = assets.result.find(
-          (asset) => asset.symbol === stockSymbol
-        );
-
-        if (!assetToShow) {
-          return;
-        }
-
-        this._assets$.next([assetToShow, ...this._assets$.value]);
-      });
+  private stockSymbolAlreadyExistInList(stockSymbol: string): boolean {
+    return (
+      this.stockSymbolList.find(
+        (stockSymbolItem) => stockSymbolItem === stockSymbol
+      ) !== undefined
+    );
   }
 
-  private loadQuoteForStockSymbol(stockSymbol: string): void {
-    this._finnHubService
-      .getQuote(stockSymbol)
-      .pipe(take(1))
-      .subscribe((quote) => {
-        quote.stockSymbol = stockSymbol;
-        this._quotes$.next([quote, ...this._quotes$.value]);
-      });
+  private addNewStockSymbolToList(stockSymbol: string): void {
+    this.stockSymbolList.push(stockSymbol);
   }
 }

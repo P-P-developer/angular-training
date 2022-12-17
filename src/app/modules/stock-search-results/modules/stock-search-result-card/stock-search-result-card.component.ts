@@ -20,7 +20,7 @@ export class StockSearchResultCardComponent {
 
   @Output() myClick = new EventEmitter();
 
-  removeCard(): void {
+  removeStockCard(): void {
     this.myClick.emit();
   }
 }

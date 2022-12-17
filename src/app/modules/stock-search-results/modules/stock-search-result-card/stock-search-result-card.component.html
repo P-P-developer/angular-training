@@ -15,12 +15,7 @@
     [displaySymbol]="companyDetails.displaySymbol"
   ></app-social-sentiment-details-button>
 
-  <button
-    id="remove{{ companyDetails.displaySymbol }}"
-    class="float-right"
-    (click)="removeCard()"
-    mat-raised-button
-  >
-    x
-  </button>
+  <app-remove-search-result-card-button
+    (onRemoveStockCardClick)="removeStockCard()"
+  ></app-remove-search-result-card-button>
 </mat-card>

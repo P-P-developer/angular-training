@@ -20,6 +20,7 @@ import { CompanyQuoteDetailsComponent } from './modules/stock-search-results/mod
 import { CompanyDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-details/company-details.component';
 import { SocialSentimentDetailsButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/social-sentiment-details-button/social-sentiment-details-button.component';
 import { FinnhubService } from '@shared/services';
+import { RemoveSearchResultCardButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/remove-search-result-card-button/remove-search-result-card-button.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FinnhubService } from '@shared/services';
     CompanyQuoteDetailsComponent,
     CompanyDetailsComponent,
     SocialSentimentDetailsButtonComponent,
+    RemoveSearchResultCardButtonComponent,
   ],
   imports: [
     HttpClientModule,

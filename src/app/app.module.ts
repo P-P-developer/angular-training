@@ -19,6 +19,7 @@ import { StockSearchResultsComponent } from './modules/stock-search-results/stoc
 import { StockSearchResultCardComponent } from './modules/stock-search-results/modules/stock-search-result-card/stock-search-result-card.component';
 import { CompanyQuoteDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-quote-details/company-quote-details.component';
 import { CompanyDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-details/company-details.component';
+import { SocialSentimentDetailsButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/social-sentiment-details-button/social-sentiment-details-button.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CompanyDetailsComponent } from './modules/stock-search-results/modules/
     StockSearchResultCardComponent,
     CompanyQuoteDetailsComponent,
     CompanyDetailsComponent,
+    SocialSentimentDetailsButtonComponent,
   ],
   imports: [
     HttpClientModule,

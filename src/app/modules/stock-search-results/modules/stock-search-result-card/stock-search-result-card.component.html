@@ -11,9 +11,9 @@
     ></app-company-quote-details>
   </div>
 
-  <button id="sentiment{{ companyDetails.displaySymbol }}" mat-raised-button>
-    Go to social sentiment details >
-  </button>
+  <app-social-sentiment-details-button
+    [displaySymbol]="companyDetails.displaySymbol"
+  ></app-social-sentiment-details-button>
 
   <button
     id="remove{{ companyDetails.displaySymbol }}"

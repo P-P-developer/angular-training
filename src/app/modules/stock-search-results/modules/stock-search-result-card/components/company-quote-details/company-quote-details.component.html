@@ -1,0 +1,14 @@
+<p>Change today: {{ companyQuote.dp / 100 | percent : "1.2-2" }}</p>
+<p>Current price: {{ companyQuote.c | currency : "USD" }}</p>
+<p>Opening price: {{ companyQuote.o | currency : "USD" }}</p>
+<p>
+  High price:
+  {{ companyQuote.h | currency : "USD" }}
+</p>
+
+<div *ngIf="companyQuote.dp < 0">
+  <mat-icon>arrow_downward</mat-icon>
+</div>
+<div *ngIf="companyQuote.dp > 0">
+  <mat-icon>arrow_upward</mat-icon>
+</div>

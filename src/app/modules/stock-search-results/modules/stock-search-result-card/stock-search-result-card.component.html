@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title
+    ><app-company-details
+      [companyDetails]="companyDetails"
+    ></app-company-details
+  ></mat-card-title>
+
+  <div *ngIf="companyQuote">
+    <app-company-quote-details
+      [companyQuote]="companyQuote"
+    ></app-company-quote-details>
+  </div>
+
+  <button id="sentiment{{ companyDetails.displaySymbol }}" mat-raised-button>
+    Go to social sentiment details >
+  </button>
+
+  <button
+    id="remove{{ companyDetails.displaySymbol }}"
+    class="float-right"
+    (click)="removeCard()"
+    mat-raised-button
+  >
+    x
+  </button>
+</mat-card>

@@ -1,3 +1,4 @@
+import { FinnhubService } from './shared/services/finnhub.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
@@ -6,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,10 +15,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StockEnterCardComponent } from './modules/stock-enter-card/stock-enter-card.component';
 import { StockFormFieldComponent } from './modules/stock-enter-card/components/stock-form-field/stock-form-field.component';
 import { StockTrackButtonComponent } from './modules/stock-enter-card/components/stock-track-button/stock-track-button.component';
+import { StockSearchResultsComponent } from './modules/stock-search-results/stock-search-results.component';
+import { StockSearchResultCardComponent } from './modules/stock-search-results/modules/stock-search-result-card/stock-search-result-card.component';
+import { CompanyQuoteDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-quote-details/company-quote-details.component';
+import { CompanyDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-details/company-details.component';
 
 @NgModule({
-  declarations: [AppComponent, StockEnterCardComponent, StockFormFieldComponent, StockTrackButtonComponent],
+  declarations: [
+    AppComponent,
+    StockEnterCardComponent,
+    StockFormFieldComponent,
+    StockTrackButtonComponent,
+    StockSearchResultsComponent,
+    StockSearchResultCardComponent,
+    CompanyQuoteDetailsComponent,
+    CompanyDetailsComponent,
+  ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -28,7 +44,7 @@ import { StockTrackButtonComponent } from './modules/stock-enter-card/components
     FormsModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [FinnhubService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

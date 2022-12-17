@@ -1,4 +1,5 @@
 export interface CompanyQuote {
+  // Stock symbol for unique identification
   stockSymbol: string;
   // Current price
   c: number;

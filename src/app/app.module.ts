@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { CompanyDetailsComponent } from './modules/stock-search-results/modules/
 import { SocialSentimentDetailsButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/social-sentiment-details-button/social-sentiment-details-button.component';
 import { FinnhubService } from '@shared/services';
 import { RemoveSearchResultCardButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/remove-search-result-card-button/remove-search-result-card-button.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,14 @@ import { RemoveSearchResultCardButtonComponent } from './modules/stock-search-re
     FormsModule,
     MatButtonModule,
   ],
-  providers: [FinnhubService],
+  providers: [
+    FinnhubService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

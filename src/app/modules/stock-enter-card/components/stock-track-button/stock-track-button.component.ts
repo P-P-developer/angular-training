@@ -1,19 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { LoaderService } from '@shared/services';
 
 @Component({
   selector: 'app-stock-track-button',
   templateUrl: './stock-track-button.component.html',
   styleUrls: ['./stock-track-button.component.scss'],
 })
-export class StockTrackButtonComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class StockTrackButtonComponent {
+  constructor(public loaderService: LoaderService) {}
 
   @Input() isInValidStockSymbol: boolean = true;
-  @Output() myClick = new EventEmitter();
+  @Output() onSearchButtonClick = new EventEmitter();
 
   saveStockSymbolToLocalStorage(): void {
-    this.myClick.emit();
+    this.onSearchButtonClick.emit();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LoaderService } from '@shared/services';
 
 @Component({
   selector: 'app-social-sentiment-details-button',
@@ -7,4 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class SocialSentimentDetailsButtonComponent {
   @Input() displaySymbol: string = '';
+
+  constructor(public loaderService: LoaderService) {}
 }

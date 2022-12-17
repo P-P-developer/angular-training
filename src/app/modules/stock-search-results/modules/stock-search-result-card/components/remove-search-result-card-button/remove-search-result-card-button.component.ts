@@ -1,3 +1,4 @@
+import { LoaderService } from '@shared/services';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -8,6 +9,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class RemoveSearchResultCardButtonComponent {
   @Input() displaySymbol: string = '';
   @Output() onRemoveStockCardClick = new EventEmitter();
+
+  constructor(public loaderService: LoaderService) {}
 
   removeStockCard(): void {
     this.onRemoveStockCardClick.emit();

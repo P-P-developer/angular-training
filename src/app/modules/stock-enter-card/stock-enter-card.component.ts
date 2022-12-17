@@ -1,11 +1,10 @@
 import { StockService } from '@shared/services';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-enter-card',
   templateUrl: './stock-enter-card.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./stock-enter-card.component.scss'],
 })
 export class StockEnterCardComponent {

@@ -2,6 +2,7 @@
   id="remove{{ displaySymbol }}"
   class="float-right"
   (click)="removeStockCard()"
+  [disabled]="loaderService.isLoading"
   mat-raised-button
 >
   x

@@ -1,3 +1,7 @@
-<button id="sentiment{{ displaySymbol }}" mat-raised-button>
+<button
+  id="sentiment{{ displaySymbol }}"
+  [disabled]="loaderService.isLoading"
+  mat-raised-button
+>
   Go to social sentiment details >
 </button>

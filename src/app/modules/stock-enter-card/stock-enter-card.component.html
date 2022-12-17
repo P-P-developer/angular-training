@@ -10,7 +10,7 @@
     [isInValidStockSymbol]="
       stockSymbolForm.value == undefined || stockSymbolForm.invalid
     "
-    (myClick)="
+    (onSearchButtonClick)="
       this.stockService.searchStockByStockSymbol(stockSymbolForm.value!)
     "
   ></app-stock-track-button>

@@ -1,3 +1,4 @@
+import { LocalStorageKeys } from './../models/localStorageKeys';
 import { AssetService } from './asset.service';
 import { QuoteService } from './quote.service';
 import { Injectable } from '@angular/core';
@@ -19,7 +20,7 @@ export class StockService {
       (stockSymbolItem) => stockSymbolItem !== stockSymbol
     );
     localStorage.setItem(
-      'stockSymbolList',
+      LocalStorageKeys.stockSymbolList,
       JSON.stringify(this.stockSymbolList)
     );
   }
@@ -46,9 +47,12 @@ export class StockService {
   }
 
   private addStockSymbolToLocalStorage(stockSymbol: string): void {
-    localStorage.setItem('currentStockSymbolToSearch', stockSymbol);
     localStorage.setItem(
-      'stockSymbolList',
+      LocalStorageKeys.currentStockSymbolToSearch,
+      stockSymbol
+    );
+    localStorage.setItem(
+      LocalStorageKeys.stockSymbolList,
       JSON.stringify(this.stockSymbolList)
     );
   }

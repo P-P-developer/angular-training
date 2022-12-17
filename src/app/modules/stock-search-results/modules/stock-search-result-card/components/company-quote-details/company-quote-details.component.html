@@ -6,9 +6,10 @@
   {{ companyQuote.h | currency : "USD" }}
 </p>
 
-<div *ngIf="companyQuote.dp < 0">
-  <mat-icon>arrow_downward</mat-icon>
-</div>
-<div *ngIf="companyQuote.dp > 0">
-  <mat-icon>arrow_upward</mat-icon>
-</div>
+<ng-template [ngIf]="companyQuote.dp < 0" [ngIfElse]="greenArrow">
+  <mat-icon class="red">arrow_downward</mat-icon>
+</ng-template>
+
+<ng-template #greenArrow>
+  <mat-icon class="green">arrow_upward</mat-icon>
+</ng-template>

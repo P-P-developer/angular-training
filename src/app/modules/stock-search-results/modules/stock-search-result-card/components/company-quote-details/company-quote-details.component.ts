@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CompanyQuote } from '@shared/models/companyquote';
+import { CompanyQuote } from '@shared/models';
 
 @Component({
   selector: 'app-company-quote-details',

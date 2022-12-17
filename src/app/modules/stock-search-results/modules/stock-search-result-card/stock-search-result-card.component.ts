@@ -1,6 +1,5 @@
-import { CompanyQuote } from '@shared/models/companyquote';
-import { CompanyDetails } from '@shared/models/companyDetails';
-import { StockService } from '@shared/services/stock.service';
+import { CompanyQuote, CompanyDetails } from '@shared/models';
+import { StockService } from '@shared/services';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({

@@ -1,4 +1,4 @@
-import { StockService } from '@shared/services/stock.service';
+import { StockService } from '@shared/services';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 

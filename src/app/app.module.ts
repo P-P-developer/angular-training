@@ -1,6 +1,6 @@
-import { FinnhubService } from './shared/services/finnhub.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StockEnterCardComponent } from './modules/stock-enter-card/stock-enter-card.component';
 import { StockFormFieldComponent } from './modules/stock-enter-card/components/stock-form-field/stock-form-field.component';
 import { StockTrackButtonComponent } from './modules/stock-enter-card/components/stock-track-button/stock-track-button.component';
@@ -20,6 +19,7 @@ import { StockSearchResultCardComponent } from './modules/stock-search-results/m
 import { CompanyQuoteDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-quote-details/company-quote-details.component';
 import { CompanyDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-details/company-details.component';
 import { SocialSentimentDetailsButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/social-sentiment-details-button/social-sentiment-details-button.component';
+import { FinnhubService } from '@shared/services';
 
 @NgModule({
   declarations: [

@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CompanyDetailsResult } from '@shared/models/companyDetailsResult';
-import { CompanyQuote } from '@shared/models/companyquote';
+import { Observable } from 'rxjs';
+
+import { CompanyDetailsResult, CompanyQuote } from '@shared/models';
 
 @Injectable()
 export class FinnhubService {

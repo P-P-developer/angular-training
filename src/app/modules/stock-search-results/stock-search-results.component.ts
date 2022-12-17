@@ -1,8 +1,6 @@
-import { AssetService } from '@shared/services/asset.service';
-import { QuoteService } from '@shared/services/quote.service';
-import { CompanyDetails } from '@shared/models/companyDetails';
+import { CompanyDetails } from '@shared/models';
 import { Component } from '@angular/core';
-import { StockService } from '@shared/services/stock.service';
+import { AssetService, StockService, QuoteService } from '@shared/services';
 
 @Component({
   selector: 'app-stock-search-results',

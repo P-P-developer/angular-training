@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CompanyQuote } from '@shared/models/companyquote';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { FinnhubService } from './finnhub.service';
+
+import { CompanyQuote } from '@shared/models';
+import { FinnhubService } from '@shared/services';
 
 @Injectable({
   providedIn: 'root',

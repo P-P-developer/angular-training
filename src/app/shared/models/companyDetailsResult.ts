@@ -1,5 +1,5 @@
 import { CompanyDetails } from './companyDetails';
-export class CompanyDetailsResult {
-  count: number = 0;
-  result: CompanyDetails[] = [];
+export interface CompanyDetailsResult {
+  count: number;
+  result: CompanyDetails[];
 }

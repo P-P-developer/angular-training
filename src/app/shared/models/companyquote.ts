@@ -1,17 +1,17 @@
-export class CompanyQuote {
-  stockSymbol: string = '';
+export interface CompanyQuote {
+  stockSymbol: string;
   // Current price
-  c: number = 0;
+  c: number;
   // Change
-  d: number = 0;
+  d: number;
   // Percent change
-  dp: number = 0;
+  dp: number;
   // High price of the day
-  h: number = 0;
+  h: number;
   // Low price of the day
-  l: number = 0;
+  l: number;
   // Open price of the day
-  o: number = 0;
+  o: number;
   // Previous close price
-  pc: number = 0;
+  pc: number;
 }

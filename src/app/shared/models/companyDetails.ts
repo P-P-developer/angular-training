@@ -1,6 +1,6 @@
-export class CompanyDetails {
-  description: string = '';
-  displaySymbol: string = '';
-  symbol: string = '';
-  type: string = '';
+export interface CompanyDetails {
+  description: string;
+  displaySymbol: string;
+  symbol: string;
+  type: string;
 }

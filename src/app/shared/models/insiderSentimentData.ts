@@ -1,7 +1,7 @@
 export interface InsiderSentimentData {
-  change: number;
-  month: number;
-  mspr: number;
-  symbol: string;
-  year: number;
+  change: number | undefined;
+  month: number | undefined;
+  mspr: number | undefined;
+  symbol: string | undefined;
+  year: number | undefined;
 }

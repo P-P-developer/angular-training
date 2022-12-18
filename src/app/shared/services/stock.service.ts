@@ -26,10 +26,14 @@ export class StockService {
   searchStockByStockSymbol(stockSymbol: string): void {
     stockSymbol = stockSymbol.toUpperCase();
 
+    console.log(this.stockSymbolList);
+
     // If the current stock symbol was already added then skip this part
     if (this.stockSymbolAlreadyExistInList(stockSymbol)) {
       return;
     }
+
+    console.log('YAYYAASXD');
 
     // Push new stock symbol to the list
     this.addNewStockSymbolToList(stockSymbol);
@@ -75,7 +79,13 @@ export class StockService {
     );
   }
 
-  private addNewStockSymbolToList(stockSymbol: string): void {
+  removeAllStockData(): void {
+    this._assetService.removeAllAssets();
+    this._quoteService.removeAllQuotes();
+    this.stockSymbolList = [];
+  }
+
+  addNewStockSymbolToList(stockSymbol: string): void {
     this.stockSymbolList.push(stockSymbol);
   }
 }

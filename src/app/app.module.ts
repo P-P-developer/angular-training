@@ -23,6 +23,8 @@ import { RemoveSearchResultCardButtonComponent } from './modules/stock-search-re
 import { LoadingInterceptor } from './loading.interceptor';
 import { SentimentDetailsCardComponent } from './modules/sentiment-details-card/sentiment-details-card.component';
 import { CompanyDetailsComponent } from '@shared/components/company-details/company-details.component';
+import { StockTrackerComponent } from './modules/stock-tracker/stock-tracker.component';
+import { ArrowComponent } from './shared/components/arrow/arrow.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { CompanyDetailsComponent } from '@shared/components/company-details/comp
     SocialSentimentDetailsButtonComponent,
     RemoveSearchResultCardButtonComponent,
     SentimentDetailsCardComponent,
+    StockTrackerComponent,
+    ArrowComponent,
   ],
   imports: [
     HttpClientModule,

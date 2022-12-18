@@ -36,6 +36,10 @@ export class QuoteService {
     );
   }
 
+  removeAllQuotes(): void {
+    this._quotes$.next([]);
+  }
+
   getQuoteByStockSymbol(stockSymbol: string): CompanyQuote | undefined {
     return this._quotes$.value.find(
       (quote) => quote.stockSymbol === stockSymbol

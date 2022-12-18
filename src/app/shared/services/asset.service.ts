@@ -40,4 +40,8 @@ export class AssetService {
       this._assets$.getValue().filter((asset) => asset.symbol !== stockSymbol)
     );
   }
+
+  removeAllAssets(): void {
+    this._assets$.next([]);
+  }
 }

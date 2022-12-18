@@ -1,9 +1,11 @@
+import { MonthHelperService } from './../../shared/services/month-helper.service';
 import { InsiderSentimentService } from './../../shared/services/insider-sentiment.service';
 import {
   QuoteService,
   AssetService,
   FinnhubService,
   LoaderService,
+  StockService,
 } from '@shared/services';
 import { Component, Input } from '@angular/core';
 import { CompanyDetails, CompanyQuote } from '@shared/models';
@@ -20,18 +22,25 @@ export class SentimentDetailsCardComponent {
 
   constructor(
     public loaderService: LoaderService,
+    public monthHelperService: MonthHelperService,
     public assetService: AssetService,
     private quoteService: QuoteService,
-    private insiderSentimentService: InsiderSentimentService,
+    private stockService: StockService,
+    public insiderSentimentService: InsiderSentimentService,
     private route: ActivatedRoute
   ) {
     this.route.params.pipe(take(1)).subscribe(async (params: Params) => {
       const { symbol } = params;
-      this.assetService.loadAssetForStockSymbol(symbol);
-      this.quoteService.loadQuoteForStockSymbol(symbol);
-      this.insiderSentimentService.loadInsiderSentimentsOfLastThreeMonthsByStockSymbol(
-        symbol
-      );
+
+      if (symbol) {
+        this.stockService.removeAllStockData();
+        this.stockService.addNewStockSymbolToList(symbol);
+        this.assetService.loadAssetForStockSymbol(symbol);
+        this.quoteService.loadQuoteForStockSymbol(symbol);
+        this.insiderSentimentService.loadInsiderSentimentsOfLastThreeMonthsByStockSymbol(
+          symbol
+        );
+      }
     });
   }
 }

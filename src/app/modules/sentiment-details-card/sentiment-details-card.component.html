@@ -1,16 +1,52 @@
 <mat-card>
-  <mat-card-title
+  <mat-card-title *ngIf="(this.assetService.assets$ | async)![0] !== undefined"
     ><app-company-details
       [companyDetails]="(this.assetService.assets$ | async)![0]"
     ></app-company-details
   ></mat-card-title>
 
-  <button
-    id="backBtn"
-    [disabled]="loaderService.isLoading"
-    routerLink=""
-    mat-raised-button
+  <div
+    *ngIf="
+      insiderSentimentService.insiderSentiments$
+        | async as insiderSentimentsResult
+    "
   >
-    < Back to list of stocks
-  </button>
+    <div *ngFor="let insiderSentimentData of insiderSentimentsResult.data">
+      <ng-template [ngIf]="!insiderSentimentData.change" [ngIfElse]="show"
+        ><p>
+          {{
+            monthHelperService.convertNumberToMonthName(
+              insiderSentimentData.month!
+            )
+          }}
+        </p>
+        <p>No data available</p>
+      </ng-template>
+
+      <ng-template #show
+        ><p>
+          {{
+            monthHelperService.convertNumberToMonthName(
+              insiderSentimentData.month!
+            )
+          }}
+        </p>
+        <p>Change: {{ insiderSentimentData.change | number : "1.2-2" }}</p>
+        <p>MSPR: {{ insiderSentimentData.mspr | number : "1.2-2" }}</p>
+
+        <app-arrow
+          [propertyToCheck]="insiderSentimentData.change ?? 0"
+        ></app-arrow>
+      </ng-template>
+    </div>
+  </div>
 </mat-card>
+
+<button
+  id="backBtn"
+  [disabled]="loaderService.isLoading"
+  routerLink=""
+  mat-raised-button
+>
+  < Back to list of stocks
+</button>

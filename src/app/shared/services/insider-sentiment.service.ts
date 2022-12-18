@@ -29,8 +29,34 @@ export class InsiderSentimentService {
     this._finnhubService
       .getInsiderSentimentFromLastThreeMonths(stockSymbol)
       .pipe(take(1))
-      .subscribe((insiderSentiments) => {
-        this._insiderSentiments$.next(insiderSentiments);
+      .subscribe((insiderSentimentsResult) => {
+        if (
+          insiderSentimentsResult &&
+          insiderSentimentsResult.data.length < 3
+        ) {
+          var lastElement =
+            insiderSentimentsResult.data[
+              insiderSentimentsResult.data.length - 1
+            ];
+
+          var currentMonth = lastElement.month;
+
+          for (
+            let index = insiderSentimentsResult.data.length;
+            index < 3;
+            index++
+          ) {
+            insiderSentimentsResult.data.push({
+              change: undefined,
+              month: currentMonth! + 1,
+              mspr: undefined,
+              symbol: stockSymbol,
+              year: undefined,
+            });
+            currentMonth!++;
+          }
+        }
+        this._insiderSentiments$.next(insiderSentimentsResult);
       });
   }
 }

@@ -1,15 +1,20 @@
+import { NotificationService } from './notificiation.service';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, take } from 'rxjs/operators';
 
 import { CompanyQuote } from '@shared/models';
 import { FinnhubService } from '@shared/services';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuoteService {
-  constructor(private _finnHubService: FinnhubService) {
+  constructor(
+    private _finnHubService: FinnhubService,
+    private _notificationService: NotificationService
+  ) {
     this._quotes$ = new BehaviorSubject<CompanyQuote[]>([]);
   }
 
@@ -22,10 +27,17 @@ export class QuoteService {
     this._finnHubService
       .getQuote(stockSymbol)
       .pipe(take(1))
-      .subscribe((quote) => {
-        quote.stockSymbol = stockSymbol;
-        this._quotes$.next([quote, ...this._quotes$.value]);
-      });
+      .subscribe(
+        (quote) => {
+          quote.stockSymbol = stockSymbol;
+          this._quotes$.next([quote, ...this._quotes$.value]);
+        },
+        (error: HttpErrorResponse) => {
+          this._notificationService.showNotification(
+            `Could not get quotes for the stock symbol ${stockSymbol}! Reason \"${error.message}\"`
+          );
+        }
+      );
   }
 
   removeQuoteByStockSymbol(stockSymbol: string): void {

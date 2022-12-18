@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,6 +57,7 @@ import { NoDetailsComponent } from './shared/components/no-details/no-details.co
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     MatIconModule,
     FormsModule,

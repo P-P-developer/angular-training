@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import { LocalStorageKeys } from '@shared/models';
-import { AssetService, QuoteService } from '@shared/services';
+import {
+  AssetService,
+  QuoteService,
+  NotificationService,
+} from '@shared/services';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +14,8 @@ export class StockService {
   private stockSymbolList: string[] = [];
   constructor(
     private _quoteService: QuoteService,
-    private _assetService: AssetService
+    private _assetService: AssetService,
+    private _notificationService: NotificationService
   ) {}
 
   loadStockDataByStockSymbolsInLocalStorage(): void {
@@ -32,6 +37,9 @@ export class StockService {
 
     // If the current stock symbol was already added then skip this part
     if (this.stockSymbolAlreadyExistInList(stockSymbol)) {
+      this._notificationService.showNotification(
+        'The stock you are looking for has already been added!'
+      );
       return;
     }
 

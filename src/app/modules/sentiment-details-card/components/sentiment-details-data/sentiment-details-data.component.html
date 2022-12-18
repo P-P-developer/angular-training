@@ -28,3 +28,7 @@
     </ng-template>
   </div>
 </div>
+
+<ng-template [ngIf]="!(insiderSentimentService.insiderSentiments$ | async)">
+  <app-no-details></app-no-details>
+</ng-template>

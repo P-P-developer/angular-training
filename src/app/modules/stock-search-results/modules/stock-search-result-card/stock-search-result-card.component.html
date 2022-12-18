@@ -5,11 +5,15 @@
     ></app-company-details
   ></mat-card-title>
 
-  <div *ngIf="companyQuote">
+  <ng-template [ngIf]="companyQuote" [ngIfElse]="noDetailsToDisplay">
     <app-company-quote-details
       [companyQuote]="companyQuote"
     ></app-company-quote-details>
-  </div>
+  </ng-template>
+
+  <ng-template #noDetailsToDisplay>
+    <app-no-details></app-no-details>
+  </ng-template>
 
   <app-social-sentiment-details-button
     [stockSymbol]="companyDetails.symbol"

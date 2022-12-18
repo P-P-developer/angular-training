@@ -18,34 +18,45 @@ export class StockService {
       localStorage.getItem(LocalStorageKeys.stockSymbolList) ?? '[]'
     );
 
-    stockSymbolList.forEach((stockSymbol) =>
-      this.searchStockByStockSymbol(stockSymbol)
-    );
+    stockSymbolList.forEach((stockSymbol) => {
+      // If the current stock symbol was already added then skip this part
+      if (this.stockSymbolAlreadyExistInList(stockSymbol)) {
+        return;
+      }
+      this.loadRequiredStockDataByStockSymbol(stockSymbol);
+    });
   }
 
   searchStockByStockSymbol(stockSymbol: string): void {
     stockSymbol = stockSymbol.toUpperCase();
-
-    console.log(this.stockSymbolList);
 
     // If the current stock symbol was already added then skip this part
     if (this.stockSymbolAlreadyExistInList(stockSymbol)) {
       return;
     }
 
-    console.log('YAYYAASXD');
-
-    // Push new stock symbol to the list
-    this.addNewStockSymbolToList(stockSymbol);
+    // Load required data for a stock by the stock symbol
+    this.loadRequiredStockDataByStockSymbol(stockSymbol);
 
     // Add stock symbol to the local storage
     this.addStockSymbolToLocalStorage(stockSymbol);
+  }
+
+  loadRequiredStockDataByStockSymbol(stockSymbol: string): void {
+    // Push new stock symbol to the list
+    this.addNewStockSymbolToList(stockSymbol);
 
     // load asset for current stock symbol
     this._assetService.loadAssetForStockSymbol(stockSymbol);
 
     // load quote for current stock symbol
     this._quoteService.loadQuoteForStockSymbol(stockSymbol);
+  }
+
+  removeAllStockData(): void {
+    this._assetService.removeAllAssets();
+    this._quoteService.removeAllQuotes();
+    this.stockSymbolList = [];
   }
 
   removeStockByStockSymbol(stockSymbol: string): void {
@@ -79,13 +90,7 @@ export class StockService {
     );
   }
 
-  removeAllStockData(): void {
-    this._assetService.removeAllAssets();
-    this._quoteService.removeAllQuotes();
-    this.stockSymbolList = [];
-  }
-
-  addNewStockSymbolToList(stockSymbol: string): void {
+  private addNewStockSymbolToList(stockSymbol: string): void {
     this.stockSymbolList.push(stockSymbol);
   }
 }

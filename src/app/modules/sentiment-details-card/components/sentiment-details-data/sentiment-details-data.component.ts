@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { InsiderSentimentData } from '@shared/models';
+import { Component } from '@angular/core';
+
 import { InsiderSentimentService, MonthHelperService } from '@shared/services';
 
 @Component({

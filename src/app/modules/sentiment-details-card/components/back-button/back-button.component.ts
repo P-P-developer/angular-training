@@ -1,5 +1,6 @@
-import { LoaderService } from '@shared/services';
 import { Component } from '@angular/core';
+
+import { LoaderService } from '@shared/services';
 
 @Component({
   selector: 'app-back-button',

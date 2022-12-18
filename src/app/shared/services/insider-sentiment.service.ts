@@ -1,8 +1,9 @@
-import { InsiderSentimentResult } from '@shared/models';
-import { FinnhubService } from '@shared/services';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+
+import { InsiderSentimentResult } from '@shared/models';
+import { FinnhubService } from '@shared/services';
 
 @Injectable({
   providedIn: 'root',

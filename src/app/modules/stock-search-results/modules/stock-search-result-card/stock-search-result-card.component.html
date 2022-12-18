@@ -12,10 +12,11 @@
   </div>
 
   <app-social-sentiment-details-button
-    [displaySymbol]="companyDetails.displaySymbol"
+    [stockSymbol]="companyDetails.symbol"
   ></app-social-sentiment-details-button>
 
   <app-remove-search-result-card-button
+    [stockSymbol]="companyDetails.symbol"
     (onRemoveStockCardClick)="removeStockCard()"
   ></app-remove-search-result-card-button>
 </mat-card>

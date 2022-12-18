@@ -14,6 +14,10 @@ const routes: Routes = [
     pathMatch: 'full',
     component: SentimentDetailsCardComponent,
   },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({

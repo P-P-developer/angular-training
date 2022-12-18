@@ -1,16 +1,14 @@
-import { MonthHelperService } from './../../shared/services/month-helper.service';
-import { InsiderSentimentService } from './../../shared/services/insider-sentiment.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { take } from 'rxjs/operators';
+
+import { InsiderSentimentService, MonthHelperService } from '@shared/services';
 import {
   QuoteService,
   AssetService,
-  FinnhubService,
   LoaderService,
   StockService,
 } from '@shared/services';
-import { Component, Input } from '@angular/core';
-import { CompanyDetails, CompanyQuote } from '@shared/models';
-import { ActivatedRoute, Params } from '@angular/router';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sentiment-details-card',
@@ -18,8 +16,6 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./sentiment-details-card.component.scss'],
 })
 export class SentimentDetailsCardComponent {
-  symbol: string = '';
-
   constructor(
     public loaderService: LoaderService,
     public monthHelperService: MonthHelperService,

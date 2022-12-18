@@ -25,6 +25,8 @@ import { SentimentDetailsCardComponent } from './modules/sentiment-details-card/
 import { CompanyDetailsComponent } from '@shared/components/company-details/company-details.component';
 import { StockTrackerComponent } from './modules/stock-tracker/stock-tracker.component';
 import { ArrowComponent } from './shared/components/arrow/arrow.component';
+import { BackButtonComponent } from './modules/sentiment-details-card/components/back-button/back-button.component';
+import { SentimentDetailsDataComponent } from './modules/sentiment-details-card/components/sentiment-details-data/sentiment-details-data.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ArrowComponent } from './shared/components/arrow/arrow.component';
     SentimentDetailsCardComponent,
     StockTrackerComponent,
     ArrowComponent,
+    BackButtonComponent,
+    SentimentDetailsDataComponent,
   ],
   imports: [
     HttpClientModule,

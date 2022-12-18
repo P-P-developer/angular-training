@@ -15,7 +15,7 @@ export class StockService {
 
   loadStockDataByStockSymbolsInLocalStorage(): void {
     const stockSymbolList: string[] = JSON.parse(
-      localStorage.getItem(LocalStorageKeys.stockSymbolList) ?? ''
+      localStorage.getItem(LocalStorageKeys.stockSymbolList) ?? '[]'
     );
 
     stockSymbolList.forEach((stockSymbol) =>

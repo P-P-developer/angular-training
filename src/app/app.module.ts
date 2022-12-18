@@ -17,11 +17,12 @@ import { StockTrackButtonComponent } from './modules/stock-enter-card/components
 import { StockSearchResultsComponent } from './modules/stock-search-results/stock-search-results.component';
 import { StockSearchResultCardComponent } from './modules/stock-search-results/modules/stock-search-result-card/stock-search-result-card.component';
 import { CompanyQuoteDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-quote-details/company-quote-details.component';
-import { CompanyDetailsComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/company-details/company-details.component';
 import { SocialSentimentDetailsButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/social-sentiment-details-button/social-sentiment-details-button.component';
 import { FinnhubService } from '@shared/services';
 import { RemoveSearchResultCardButtonComponent } from './modules/stock-search-results/modules/stock-search-result-card/components/remove-search-result-card-button/remove-search-result-card-button.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { SentimentDetailsCardComponent } from './modules/sentiment-details-card/sentiment-details-card.component';
+import { CompanyDetailsComponent } from '@shared/components/company-details/company-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LoadingInterceptor } from './loading.interceptor';
     CompanyDetailsComponent,
     SocialSentimentDetailsButtonComponent,
     RemoveSearchResultCardButtonComponent,
+    SentimentDetailsCardComponent,
   ],
   imports: [
     HttpClientModule,

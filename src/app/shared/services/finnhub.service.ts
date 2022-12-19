@@ -33,7 +33,9 @@ export class FinnhubService {
   }
 
   // Insider Sentiment
-  getInsiderSentimentFromLastThreeMonths(symbol: string) {
+  getInsiderSentimentFromLastThreeMonths(
+    symbol: string
+  ): Observable<InsiderSentimentResult> {
     const now = new Date();
     // Get the first date of the month from 3 months ago
     const firstMonth = this._monthHelper.getFirstDateOfMonthFromCurrentYear(

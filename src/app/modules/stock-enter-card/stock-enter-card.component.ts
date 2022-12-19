@@ -14,7 +14,7 @@ export class StockEnterCardComponent {
 
   constructor(public stockService: StockService) {}
 
-  receiveFormControl(formControl: FormControl) {
+  receiveFormControl(formControl: FormControl): void {
     this.stockSymbolForm = formControl;
   }
 }

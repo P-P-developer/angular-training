@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { ArrowComponent } from './shared/components/arrow/arrow.component';
 import { BackButtonComponent } from './modules/sentiment-details-card/components/back-button/back-button.component';
 import { SentimentDetailsDataComponent } from './modules/sentiment-details-card/components/sentiment-details-data/sentiment-details-data.component';
 import { NoDetailsComponent } from './shared/components/no-details/no-details.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { NoDetailsComponent } from './shared/components/no-details/no-details.co
     BackButtonComponent,
     SentimentDetailsDataComponent,
     NoDetailsComponent,
+    SpinnerComponent,
   ],
   imports: [
     HttpClientModule,
@@ -58,6 +61,7 @@ import { NoDetailsComponent } from './shared/components/no-details/no-details.co
     MatInputModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatIconModule,
     FormsModule,

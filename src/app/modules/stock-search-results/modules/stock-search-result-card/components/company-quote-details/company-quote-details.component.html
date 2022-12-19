@@ -1,4 +1,8 @@
-<p>Change today: {{ companyQuote.dp / 100 | percent : "1.2-2" }}</p>
+<p>
+  Change today:
+  {{ numberHelperService.addPlusWhenNumberIsPositiv(companyQuote.dp)
+  }}{{ companyQuote.dp / 100 | percent : "1.2-2" }}
+</p>
 <p>Current price: {{ companyQuote.c | currency : "USD" }}</p>
 <p>Opening price: {{ companyQuote.o | currency : "USD" }}</p>
 <p>

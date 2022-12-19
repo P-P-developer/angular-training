@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
-import { InsiderSentimentService, MonthHelperService } from '@shared/services';
+import {
+  InsiderSentimentService,
+  MonthHelperService,
+  NumberHelperService,
+} from '@shared/services';
 
 @Component({
   selector: 'app-sentiment-details-data',
@@ -10,6 +14,7 @@ import { InsiderSentimentService, MonthHelperService } from '@shared/services';
 export class SentimentDetailsDataComponent {
   constructor(
     public monthHelperService: MonthHelperService,
-    public insiderSentimentService: InsiderSentimentService
+    public insiderSentimentService: InsiderSentimentService,
+    public numberHelperService: NumberHelperService
   ) {}
 }

@@ -1,3 +1,4 @@
+import { NumberHelperService } from '@shared/services/';
 import { Component, Input } from '@angular/core';
 import { CompanyQuote } from '@shared/models';
 
@@ -8,4 +9,6 @@ import { CompanyQuote } from '@shared/models';
 })
 export class CompanyQuoteDetailsComponent {
   @Input() companyQuote!: CompanyQuote;
+
+  constructor(public numberHelperService: NumberHelperService) {}
 }

@@ -19,7 +19,14 @@
     </ng-template>
 
     <ng-template #show>
-      <p>Change: {{ insiderSentimentData.change | number : "1.2-2" }}</p>
+      <p>
+        Change:
+        {{
+          numberHelperService.addPlusWhenNumberIsPositiv(
+            insiderSentimentData.change ?? 0
+          )
+        }}{{ insiderSentimentData.change | number : "1.2-2" }}
+      </p>
       <p>MSPR: {{ insiderSentimentData.mspr | number : "1.2-2" }}</p>
 
       <app-arrow

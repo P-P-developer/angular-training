@@ -1,11 +1,14 @@
-<mat-card>
-  <mat-card-title *ngIf="(this.assetService.assets$ | async)![0] !== undefined"
-    ><app-company-details
-      [companyDetails]="(this.assetService.assets$ | async)![0]"
-    ></app-company-details
-  ></mat-card-title>
+<div *ngIf="!loaderService.isLoading">
+  <mat-card>
+    <mat-card-title
+      *ngIf="(this.assetService.assets$ | async)![0] !== undefined"
+      ><app-company-details
+        [companyDetails]="(this.assetService.assets$ | async)![0]"
+      ></app-company-details
+    ></mat-card-title>
 
-  <app-sentiment-details-data></app-sentiment-details-data>
-</mat-card>
+    <app-sentiment-details-data></app-sentiment-details-data>
+  </mat-card>
 
-<app-back-button></app-back-button>
+  <app-back-button></app-back-button>
+</div>

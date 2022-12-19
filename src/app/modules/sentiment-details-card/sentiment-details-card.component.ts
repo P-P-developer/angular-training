@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { InsiderSentimentService } from '@shared/services';
+import { InsiderSentimentService, LoaderService } from '@shared/services';
 import { AssetService, StockService } from '@shared/services';
 
 @Component({
@@ -13,6 +13,7 @@ import { AssetService, StockService } from '@shared/services';
 export class SentimentDetailsCardComponent implements OnDestroy {
   constructor(
     public assetService: AssetService,
+    public loaderService: LoaderService,
     private _stockService: StockService,
     private _insiderSentimentService: InsiderSentimentService,
     private _route: ActivatedRoute

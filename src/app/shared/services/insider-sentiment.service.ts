@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { InsiderSentimentResult } from '@shared/models';
+import { InsiderSentimentData, InsiderSentimentResult } from '@shared/models';
 import { FinnhubService } from '@shared/services';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -37,32 +37,10 @@ export class InsiderSentimentService {
       .pipe(take(1))
       .subscribe(
         (insiderSentimentsResult) => {
-          if (
-            insiderSentimentsResult &&
-            insiderSentimentsResult.data.length < 3
-          ) {
-            var lastElement =
-              insiderSentimentsResult.data[
-                insiderSentimentsResult.data.length - 1
-              ];
-
-            var currentMonth = lastElement.month;
-
-            for (
-              let index = insiderSentimentsResult.data.length;
-              index < 3;
-              index++
-            ) {
-              insiderSentimentsResult.data.push({
-                change: undefined,
-                month: currentMonth! + 1,
-                mspr: undefined,
-                symbol: stockSymbol,
-                year: undefined,
-              });
-              currentMonth!++;
-            }
-          }
+          this.addMissingMonthsWithEmptyData(
+            stockSymbol,
+            insiderSentimentsResult
+          );
           this._insiderSentiments$.next(insiderSentimentsResult);
         },
         (error: HttpErrorResponse) => {
@@ -71,5 +49,35 @@ export class InsiderSentimentService {
           );
         }
       );
+  }
+
+  private addMissingMonthsWithEmptyData(
+    stockSymbol: string,
+    insiderSentimentsResult: InsiderSentimentResult
+  ): InsiderSentimentResult {
+    // Check if the API doesnt return data from the last three months
+    if (insiderSentimentsResult && insiderSentimentsResult.data.length < 3) {
+      var lastElement =
+        insiderSentimentsResult.data[insiderSentimentsResult.data.length - 1];
+
+      var currentMonth = lastElement.month;
+
+      // Add empty data for missing months
+      for (
+        let index = insiderSentimentsResult.data.length;
+        index < 3;
+        index++
+      ) {
+        insiderSentimentsResult.data.push({
+          change: undefined,
+          month: currentMonth! + 1,
+          mspr: undefined,
+          symbol: stockSymbol,
+          year: undefined,
+        });
+        currentMonth!++;
+      }
+    }
+    return insiderSentimentsResult;
   }
 }

@@ -1,9 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MonthHelperService {
+  private readonly datePipe: DatePipe = new DatePipe('en-US');
   constructor() {}
 
   convertNumberToMonthName(monthNumber: number): string {
@@ -35,5 +37,11 @@ export class MonthHelperService {
       default:
         return '';
     }
+  }
+
+  getFirstDateOfMonthFromCurrentYear(monthNumber: number): string {
+    const now = new Date();
+    const firstDateOfMonth = new Date(now.getFullYear(), monthNumber, 1);
+    return this.datePipe.transform(firstDateOfMonth, 'YYYY-MM-dd') ?? '';
   }
 }

@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { InsiderSentimentService } from '@shared/services';
-import { QuoteService, AssetService, StockService } from '@shared/services';
+import { AssetService, StockService } from '@shared/services';
 
 @Component({
   selector: 'app-sentiment-details-card',
   templateUrl: './sentiment-details-card.component.html',
   styleUrls: ['./sentiment-details-card.component.scss'],
 })
-export class SentimentDetailsCardComponent {
+export class SentimentDetailsCardComponent implements OnDestroy {
   constructor(
     public assetService: AssetService,
-    private _quoteService: QuoteService,
     private _stockService: StockService,
     private _insiderSentimentService: InsiderSentimentService,
     private _route: ActivatedRoute
@@ -29,5 +28,10 @@ export class SentimentDetailsCardComponent {
         );
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    // Remove everything when leaving the component
+    this._stockService.removeAllStockData();
   }
 }

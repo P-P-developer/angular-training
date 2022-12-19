@@ -13,7 +13,6 @@ export class StockSearchResultsComponent {
     public assetService: AssetService,
     private _stockService: StockService
   ) {
-    console.log('construct');
     this._stockService.loadStockDataByStockSymbolsInLocalStorage();
   }
 

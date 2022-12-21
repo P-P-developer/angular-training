@@ -1,6 +1,9 @@
-import { CompanyQuote, CompanyDetails } from '@shared/models';
-import { StockService } from '@shared/services';
+import {
+  CompanyQuote,
+  CompanyDetails,
+} from 'src/app/modules/stock-tracker/models';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { StockService } from 'src/app/modules/stock-tracker/services';
 
 @Component({
   selector: 'app-stock-search-result-card',

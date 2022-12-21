@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 
-import {
-  InsiderSentimentService,
-  MonthHelperService,
-  NumberHelperService,
-} from '@shared/services';
+import { MonthHelperService, NumberHelperService } from '@shared/services';
+import { InsiderSentimentService } from 'src/app/modules/stock-tracker/services';
 
 @Component({
   selector: 'app-sentiment-details-data',

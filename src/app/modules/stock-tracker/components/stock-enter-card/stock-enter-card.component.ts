@@ -1,4 +1,4 @@
-import { StockService } from '@shared/services';
+import { StockService } from 'src/app/modules/stock-tracker/services';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 

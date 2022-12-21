@@ -2,8 +2,12 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { InsiderSentimentService, LoaderService } from '@shared/services';
-import { AssetService, StockService } from '@shared/services';
+import { LoaderService } from '@shared/services';
+import {
+  AssetService,
+  StockService,
+  InsiderSentimentService,
+} from 'src/app/modules/stock-tracker/services';
 
 @Component({
   selector: 'app-sentiment-details-card',

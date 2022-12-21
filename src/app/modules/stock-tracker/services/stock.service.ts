@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { LocalStorageKeys } from '@shared/models';
-import {
-  AssetService,
-  QuoteService,
-  NotificationService,
-} from '@shared/services';
+import { AssetService } from './asset.service';
+import { NotificationService } from './notificiation.service';
+import { QuoteService } from './quote.service';
 
 @Injectable({
   providedIn: 'root',

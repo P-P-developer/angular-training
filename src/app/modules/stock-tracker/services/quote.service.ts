@@ -1,10 +1,10 @@
 import { NotificationService } from './notificiation.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { catchError, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
-import { CompanyQuote } from '@shared/models';
-import { FinnhubService } from '@shared/services';
+import { CompanyQuote } from 'src/app/modules/stock-tracker/models';
+import { FinnhubService } from './finnhub.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({

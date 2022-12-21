@@ -1,6 +1,10 @@
-import { CompanyDetails } from '@shared/models';
+import { CompanyDetails } from 'src/app/modules/stock-tracker/models';
 import { Component } from '@angular/core';
-import { AssetService, StockService, QuoteService } from '@shared/services';
+import {
+  QuoteService,
+  AssetService,
+  StockService,
+} from 'src/app/modules/stock-tracker/services';
 
 @Component({
   selector: 'app-stock-search-results',

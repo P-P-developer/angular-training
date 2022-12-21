@@ -1,6 +1,6 @@
 import { NumberHelperService } from '@shared/services/';
 import { Component, Input } from '@angular/core';
-import { CompanyQuote } from '@shared/models';
+import { CompanyQuote } from 'src/app/modules/stock-tracker/models';
 
 @Component({
   selector: 'app-company-quote-details',

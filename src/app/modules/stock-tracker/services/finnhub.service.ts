@@ -6,7 +6,7 @@ import {
   CompanyDetailsResult,
   CompanyQuote,
   InsiderSentimentResult,
-} from '@shared/models';
+} from 'src/app/modules/stock-tracker/models';
 
 @Injectable({
   providedIn: 'root',

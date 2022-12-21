@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CompanyDetails } from '@shared/models';
+import { CompanyDetails } from 'src/app/modules/stock-tracker/models';
 
 @Component({
   selector: 'app-company-details',

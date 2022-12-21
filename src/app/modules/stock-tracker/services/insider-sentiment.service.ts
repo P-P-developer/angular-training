@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { InsiderSentimentData, InsiderSentimentResult } from '@shared/models';
-import { FinnhubService } from '@shared/services';
+import { InsiderSentimentResult } from 'src/app/modules/stock-tracker/models';
 import { HttpErrorResponse } from '@angular/common/http';
+import { FinnhubService } from './finnhub.service';
 
 @Injectable({
   providedIn: 'root',

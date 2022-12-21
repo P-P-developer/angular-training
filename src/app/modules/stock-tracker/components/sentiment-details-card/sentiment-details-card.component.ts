@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
 
@@ -14,14 +14,16 @@ import {
   templateUrl: './sentiment-details-card.component.html',
   styleUrls: ['./sentiment-details-card.component.scss'],
 })
-export class SentimentDetailsCardComponent implements OnDestroy {
+export class SentimentDetailsCardComponent implements OnInit, OnDestroy {
   constructor(
     public assetService: AssetService,
     public loaderService: LoaderService,
     private _stockService: StockService,
     private _insiderSentimentService: InsiderSentimentService,
     private _route: ActivatedRoute
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this._route.params.pipe(take(1)).subscribe(async (params: Params) => {
       const { symbol } = params;
 

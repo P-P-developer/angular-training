@@ -1,5 +1,5 @@
 import { CompanyDetails } from 'src/app/modules/stock-tracker/models';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   QuoteService,
   AssetService,
@@ -11,12 +11,14 @@ import {
   templateUrl: './stock-search-results.component.html',
   styleUrls: ['./stock-search-results.component.scss'],
 })
-export class StockSearchResultsComponent {
+export class StockSearchResultsComponent implements OnInit {
   constructor(
     public quoteService: QuoteService,
     public assetService: AssetService,
     private _stockService: StockService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this._stockService.loadStockDataByStockSymbolsInLocalStorage();
   }
 

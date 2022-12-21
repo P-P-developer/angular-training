@@ -1,7 +1,9 @@
 <mat-card>
   <mat-card-title-group>
-    <mat-card-title>{{ title | uppercase }}</mat-card-title>
-    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+    <mat-card-title>{{ "stock tracker" | uppercase }}</mat-card-title>
+    <mat-card-subtitle>{{
+      "Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)"
+    }}</mat-card-subtitle>
   </mat-card-title-group>
   <app-stock-form-field
     (onStockSymbolFormControlChange)="receiveFormControl($event)"

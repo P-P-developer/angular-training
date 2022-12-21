@@ -8,8 +8,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./stock-enter-card.component.scss'],
 })
 export class StockEnterCardComponent {
-  title = 'stock tracker';
-  subtitle = 'Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)';
   stockSymbolForm = new FormControl(undefined);
 
   constructor(public stockService: StockService) {}

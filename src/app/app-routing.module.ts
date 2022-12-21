@@ -1,23 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { StockTrackerComponent } from './modules/stock-tracker/stock-tracker.component';
-import { SentimentDetailsCardComponent } from './modules/sentiment-details-card/sentiment-details-card.component';
-
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: StockTrackerComponent,
-  },
-  {
-    path: 'sentiment/:symbol',
-    pathMatch: 'full',
-    component: SentimentDetailsCardComponent,
-  },
-  {
-    path: '**',
-    redirectTo: '',
+    loadChildren: () =>
+      import('./modules/stock-tracker/stock-tracker.module').then(
+        (m) => m.StockTrackerModule
+      ),
   },
 ];
 

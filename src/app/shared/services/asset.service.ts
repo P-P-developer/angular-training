@@ -34,6 +34,9 @@ export class AssetService {
           );
 
           if (!assetToShow) {
+            this._notificationService.showNotification(
+              `Could not find any stock with the symbol ${stockSymbol}!`
+            );
             return;
           }
 

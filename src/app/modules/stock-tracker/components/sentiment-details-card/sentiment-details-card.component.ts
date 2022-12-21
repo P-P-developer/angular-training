@@ -11,6 +11,7 @@ import { AssetService, StockService } from '@shared/services';
   styleUrls: ['./sentiment-details-card.component.scss'],
 })
 export class SentimentDetailsCardComponent implements OnDestroy {
+  symbol: string = '';
   constructor(
     public assetService: AssetService,
     public loaderService: LoaderService,
@@ -18,6 +19,7 @@ export class SentimentDetailsCardComponent implements OnDestroy {
     private _insiderSentimentService: InsiderSentimentService,
     private _route: ActivatedRoute
   ) {
+    console.log('test');
     this._route.params.pipe(take(1)).subscribe(async (params: Params) => {
       const { symbol } = params;
 

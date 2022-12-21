@@ -8,7 +8,9 @@ import {
   InsiderSentimentResult,
 } from '@shared/models';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FinnhubService {
   constructor(
     private _monthHelper: MonthHelperService,

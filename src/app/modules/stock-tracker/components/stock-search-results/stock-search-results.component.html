@@ -1,0 +1,6 @@
+<app-stock-search-result-card
+  *ngFor="let asset of assetService.assets$ | async; trackBy: trackByFn"
+  [companyDetails]="asset"
+  [companyQuote]="quoteService.getQuoteByStockSymbol(asset.symbol)"
+  (myClick)="removeStockFromList(asset.symbol)"
+></app-stock-search-result-card>

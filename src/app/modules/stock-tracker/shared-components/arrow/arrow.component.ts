@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-arrow',
+  selector: 'st-arrow',
   templateUrl: './arrow.component.html',
   styleUrls: ['./arrow.component.scss'],
 })

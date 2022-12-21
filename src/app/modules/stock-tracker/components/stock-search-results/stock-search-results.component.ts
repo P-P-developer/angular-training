@@ -7,7 +7,7 @@ import {
 } from 'src/app/modules/stock-tracker/services';
 
 @Component({
-  selector: 'app-stock-search-results',
+  selector: 'st-stock-search-results',
   templateUrl: './stock-search-results.component.html',
   styleUrls: ['./stock-search-results.component.scss'],
 })

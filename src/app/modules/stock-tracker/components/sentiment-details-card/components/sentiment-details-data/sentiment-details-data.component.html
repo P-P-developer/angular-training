@@ -29,13 +29,11 @@
       </p>
       <p>MSPR: {{ insiderSentimentData.mspr | number : "1.2-2" }}</p>
 
-      <app-arrow
-        [propertyToCheck]="insiderSentimentData.change ?? 0"
-      ></app-arrow>
+      <st-arrow [propertyToCheck]="insiderSentimentData.change ?? 0"></st-arrow>
     </ng-template>
   </div>
 </div>
 
 <ng-template [ngIf]="!(insiderSentimentService.insiderSentiments$ | async)">
-  <app-no-details></app-no-details>
+  <st-no-details></st-no-details>
 </ng-template>

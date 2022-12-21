@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-stock-enter-card',
+  selector: 'st-stock-enter-card',
   templateUrl: './stock-enter-card.component.html',
   styleUrls: ['./stock-enter-card.component.scss'],
 })

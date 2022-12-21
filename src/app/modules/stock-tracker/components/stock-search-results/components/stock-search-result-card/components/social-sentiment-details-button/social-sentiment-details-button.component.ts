@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { LoaderService } from '@shared/services';
 
 @Component({
-  selector: 'app-social-sentiment-details-button',
+  selector: 'st-social-sentiment-details-button',
   templateUrl: './social-sentiment-details-button.component.html',
   styleUrls: ['./social-sentiment-details-button.component.scss'],
 })

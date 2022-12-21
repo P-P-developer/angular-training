@@ -4,7 +4,7 @@ import { MonthHelperService, NumberHelperService } from '@shared/services';
 import { InsiderSentimentService } from 'src/app/modules/stock-tracker/services';
 
 @Component({
-  selector: 'app-sentiment-details-data',
+  selector: 'st-sentiment-details-data',
   templateUrl: './sentiment-details-data.component.html',
   styleUrls: ['./sentiment-details-data.component.scss'],
 })

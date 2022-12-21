@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LoaderService } from '@shared/services';
 
 @Component({
-  selector: 'app-stock-track-button',
+  selector: 'st-stock-track-button',
   templateUrl: './stock-track-button.component.html',
   styleUrls: ['./stock-track-button.component.scss'],
 })

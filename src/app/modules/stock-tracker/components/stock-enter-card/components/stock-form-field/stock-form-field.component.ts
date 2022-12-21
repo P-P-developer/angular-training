@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-stock-form-field',
+  selector: 'st-stock-form-field',
   templateUrl: './stock-form-field.component.html',
   styleUrls: ['./stock-form-field.component.scss'],
 })

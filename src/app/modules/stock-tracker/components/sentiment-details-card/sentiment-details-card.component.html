@@ -2,13 +2,13 @@
   <mat-card>
     <mat-card-title
       *ngIf="(this.assetService.assets$ | async)![0] !== undefined"
-      ><app-company-details
+      ><st-company-details
         [companyDetails]="(this.assetService.assets$ | async)![0]"
-      ></app-company-details
+      ></st-company-details
     ></mat-card-title>
 
-    <app-sentiment-details-data></app-sentiment-details-data>
+    <st-sentiment-details-data></st-sentiment-details-data>
   </mat-card>
 
-  <app-back-button></app-back-button>
+  <st-back-button></st-back-button>
 </div>

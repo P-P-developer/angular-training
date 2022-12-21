@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-stock-tracker',
+  selector: 'st-stock-tracker',
   templateUrl: './stock-tracker.component.html',
 })
 export class StockTrackerComponent {

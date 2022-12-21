@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { LoaderService } from '@shared/services';
 
 @Component({
-  selector: 'app-back-button',
+  selector: 'st-back-button',
   templateUrl: './back-button.component.html',
   styleUrls: ['./back-button.component.scss'],
 })

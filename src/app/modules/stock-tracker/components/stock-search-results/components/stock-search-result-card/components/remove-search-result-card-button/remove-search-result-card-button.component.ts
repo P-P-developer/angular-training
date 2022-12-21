@@ -2,7 +2,7 @@ import { LoaderService } from '@shared/services';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-remove-search-result-card-button',
+  selector: 'st-remove-search-result-card-button',
   templateUrl: './remove-search-result-card-button.component.html',
   styleUrls: ['./remove-search-result-card-button.component.scss'],
 })

@@ -10,7 +10,7 @@ import {
 } from 'src/app/modules/stock-tracker/services';
 
 @Component({
-  selector: 'app-sentiment-details-card',
+  selector: 'st-sentiment-details-card',
   templateUrl: './sentiment-details-card.component.html',
   styleUrls: ['./sentiment-details-card.component.scss'],
 })

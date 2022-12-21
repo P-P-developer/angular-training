@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CompanyDetails } from 'src/app/modules/stock-tracker/models';
 
 @Component({
-  selector: 'app-company-details',
+  selector: 'st-company-details',
   templateUrl: './company-details.component.html',
   styleUrls: ['./company-details.component.scss'],
 })

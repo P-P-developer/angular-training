@@ -51,6 +51,10 @@ export class InsiderSentimentService {
       );
   }
 
+  resetData(): void {
+    this._insiderSentiments$.next(undefined);
+  }
+
   private addMissingMonthsWithEmptyData(
     stockSymbol: string,
     insiderSentimentsResult: InsiderSentimentResult

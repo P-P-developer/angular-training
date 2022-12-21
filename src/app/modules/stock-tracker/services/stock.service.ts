@@ -52,11 +52,13 @@ export class StockService {
     // load asset for current stock symbol
     this._assetService.loadAssetForStockSymbol(stockSymbol);
 
-    // load quote for current stock symbol
-    this._quoteService.loadQuoteForStockSymbol(stockSymbol);
+    this._assetService.assetsFound$.subscribe(() => {
+      // load quote for current stock symbol
+      this._quoteService.loadQuoteForStockSymbol(stockSymbol);
 
-    // Push new stock symbol to the list
-    this.addNewStockSymbolToList(stockSymbol);
+      // Push new stock symbol to the list
+      this.addNewStockSymbolToList(stockSymbol);
+    });
   }
 
   removeAllStockData(): void {

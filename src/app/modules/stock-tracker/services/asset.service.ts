@@ -1,6 +1,6 @@
 import { NotificationService } from './notificiation.service';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,11 +16,17 @@ export class AssetService {
     private _notificationService: NotificationService
   ) {
     this._assets$ = new BehaviorSubject<CompanyDetails[]>([]);
+    this._assetsFound$ = new Subject<void>();
   }
 
   private _assets$: BehaviorSubject<CompanyDetails[]>;
   public get assets$(): Observable<CompanyDetails[]> {
     return this._assets$.asObservable();
+  }
+
+  private _assetsFound$: Subject<void>;
+  public get assetsFound$(): Observable<void> {
+    return this._assetsFound$.asObservable();
   }
 
   loadAssetForStockSymbol(stockSymbol: string): void {
@@ -40,6 +46,7 @@ export class AssetService {
             return;
           }
 
+          this._assetsFound$.next();
           this._assets$.next([assetToShow, ...this._assets$.value]);
         },
         (error: HttpErrorResponse) => {

@@ -21,9 +21,9 @@ export class StockSearchResultCardComponent {
 
   @Input() companyQuote: CompanyQuote | undefined = undefined;
 
-  @Output() myClick = new EventEmitter();
+  @Output() onRemoveStockCardButtonClick = new EventEmitter();
 
   removeStockCard(): void {
-    this.myClick.emit();
+    this.onRemoveStockCardButtonClick.emit();
   }
 }

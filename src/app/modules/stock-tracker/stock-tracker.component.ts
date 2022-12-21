@@ -15,7 +15,7 @@ export class StockTrackerComponent {
    * @returns
    * @memberof MyComponent
    */
-  hasRoute(route: string) {
+  hasRoute(route: string): boolean {
     return this._router.url.includes(route);
   }
 }

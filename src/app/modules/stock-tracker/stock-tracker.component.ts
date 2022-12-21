@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './stock-tracker.component.html',
 })
 export class StockTrackerComponent {
-  constructor(public router: Router) {}
+  constructor(private _router: Router) {}
 
   /**
    * Check if the router url contains the specified route
@@ -16,6 +16,6 @@ export class StockTrackerComponent {
    * @memberof MyComponent
    */
   hasRoute(route: string) {
-    return this.router.url.includes(route);
+    return this._router.url.includes(route);
   }
 }

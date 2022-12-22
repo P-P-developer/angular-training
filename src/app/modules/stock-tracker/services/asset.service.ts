@@ -1,26 +1,24 @@
-import { NotificationService } from './notificiation.service';
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { HttpErrorResponse } from '@angular/common/http';
 import { FinnhubService } from './finnhub.service';
-import { CompanyDetails } from 'src/app/modules/stock-tracker/models';
+import { CompanyStockDetails } from 'src/app/modules/stock-tracker/models';
+import { NotificationService } from '@shared/services/notification.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AssetService {
   constructor(
     private _finnHubService: FinnhubService,
     private _notificationService: NotificationService
   ) {
-    this._assets$ = new BehaviorSubject<CompanyDetails[]>([]);
+    this._assets$ = new BehaviorSubject<CompanyStockDetails[]>([]);
     this._assetsFound$ = new Subject<void>();
   }
 
-  private _assets$: BehaviorSubject<CompanyDetails[]>;
-  public get assets$(): Observable<CompanyDetails[]> {
+  private _assets$: BehaviorSubject<CompanyStockDetails[]>;
+  public get assets$(): Observable<CompanyStockDetails[]> {
     return this._assets$.asObservable();
   }
 
@@ -31,7 +29,7 @@ export class AssetService {
 
   loadAssetForStockSymbol(stockSymbol: string): void {
     this._finnHubService
-      .searchAssets(stockSymbol)
+      .getCompanyStockDetailsByStockSymbol(stockSymbol)
       .pipe(take(1))
       .subscribe(
         (assets) => {
@@ -46,8 +44,8 @@ export class AssetService {
             return;
           }
 
-          this._assetsFound$.next();
           this._assets$.next([assetToShow, ...this._assets$.value]);
+          this._assetsFound$.next();
         },
         (error: HttpErrorResponse) => {
           this._notificationService.showNotification(
@@ -65,5 +63,21 @@ export class AssetService {
 
   removeAllAssets(): void {
     this._assets$.next([]);
+  }
+
+  orderAssetsByStockSymbolList(stockSymbolList: string[]): void {
+    var sortedResults = this._assets$.value.sort(
+      (asset1, asset2) =>
+        stockSymbolList.indexOf(asset1.symbol) -
+        stockSymbolList.indexOf(asset2.symbol)
+    );
+    this._assets$.next(sortedResults);
+  }
+
+  assetExistInListByStockSymbol(stockSymbol: string): boolean {
+    return (
+      this._assets$.value.find((asset) => asset.symbol === stockSymbol) !==
+      undefined
+    );
   }
 }

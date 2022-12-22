@@ -1,5 +1,5 @@
-import { CompanyDetails } from 'src/app/modules/stock-tracker/models';
-import { Component, OnInit } from '@angular/core';
+import { CompanyStockDetails } from 'src/app/modules/stock-tracker/models';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   QuoteService,
   AssetService,
@@ -11,22 +11,26 @@ import {
   templateUrl: './stock-search-results.component.html',
   styleUrls: ['./stock-search-results.component.scss'],
 })
-export class StockSearchResultsComponent implements OnInit {
+export class StockSearchResultsComponent implements OnInit, OnDestroy {
   constructor(
     public quoteService: QuoteService,
     public assetService: AssetService,
     private _stockService: StockService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._stockService.loadStockDataByStockSymbolsInLocalStorage();
+  }
+
+  ngOnDestroy(): void {
+    this._stockService.destroySubscriptions();
   }
 
   removeStockFromList(stockSymbol: string): void {
     this._stockService.removeStockByStockSymbol(stockSymbol);
   }
 
-  trackByFn(index: number, item: CompanyDetails): string {
+  trackByFn(index: number, item: CompanyStockDetails): string {
     return item.symbol; // unique value corresponding to the item
   }
 }

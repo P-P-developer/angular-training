@@ -3,7 +3,7 @@
     <mat-card-title
       *ngIf="(this.assetService.assets$ | async)![0] !== undefined"
       ><st-company-details
-        [companyDetails]="(this.assetService.assets$ | async)![0]"
+        [CompanyStockDetails]="(this.assetService.assets$ | async)![0]"
       ></st-company-details
     ></mat-card-title>
 

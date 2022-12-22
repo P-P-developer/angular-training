@@ -1,6 +1,6 @@
 import {
   CompanyQuote,
-  CompanyDetails,
+  CompanyStockDetails,
 } from 'src/app/modules/stock-tracker/models';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StockService } from 'src/app/modules/stock-tracker/services';
@@ -12,7 +12,7 @@ import { StockService } from 'src/app/modules/stock-tracker/services';
 })
 export class StockSearchResultCardComponent {
   constructor(public stockService: StockService) {}
-  @Input() companyDetails: CompanyDetails = {
+  @Input() CompanyStockDetails: CompanyStockDetails = {
     description: '',
     displaySymbol: '',
     symbol: '',

@@ -1,7 +1,16 @@
-import { StockTrackerRoutingModule } from './stock-tracker-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { StockEnterCardComponent } from './components/stock-enter-card/stock-enter-card.component';
 import { StockFormFieldComponent } from './components/stock-enter-card/components/stock-form-field/stock-form-field.component';
 import { StockTrackButtonComponent } from './components/stock-enter-card/components/stock-track-button/stock-track-button.component';
@@ -16,16 +25,15 @@ import { ArrowComponent } from './shared-components/arrow/arrow.component';
 import { NoDetailsComponent } from 'src/app/modules/stock-tracker/shared-components/no-details/no-details.component';
 import { SentimentDetailsDataComponent } from './components/sentiment-details-card/components/sentiment-details-data/sentiment-details-data.component';
 import { BackButtonComponent } from './components/sentiment-details-card/components/back-button/back-button.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { CompanyDetailsComponent } from './shared-components/company-details/company-details.component';
+import { CompanyStockDetailsComponent } from './shared-components/company-details/company-details.component';
+import {
+  AssetService,
+  FinnhubService,
+  InsiderSentimentService,
+  QuoteService,
+  StockService,
+} from './services';
+import { StockTrackerRoutingModule } from './stock-tracker-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,7 @@ import { CompanyDetailsComponent } from './shared-components/company-details/com
     StockSearchResultsComponent,
     StockSearchResultCardComponent,
     CompanyQuoteDetailsComponent,
-    CompanyDetailsComponent,
+    CompanyStockDetailsComponent,
     SocialSentimentDetailsButtonComponent,
     RemoveSearchResultCardButtonComponent,
     SentimentDetailsCardComponent,
@@ -61,6 +69,12 @@ import { CompanyDetailsComponent } from './shared-components/company-details/com
     FormsModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [
+    StockService,
+    QuoteService,
+    InsiderSentimentService,
+    FinnhubService,
+    AssetService,
+  ],
 })
 export class StockTrackerModule {}

@@ -1,15 +1,13 @@
-import { NotificationService } from './notificiation.service';
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { CompanyQuote } from 'src/app/modules/stock-tracker/models';
 import { FinnhubService } from './finnhub.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from '@shared/services/notification.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class QuoteService {
   constructor(
     private _finnHubService: FinnhubService,
@@ -38,6 +36,14 @@ export class QuoteService {
           );
         }
       );
+  }
+
+  quoteAlreadyLoaded(stockSymbol: string): boolean {
+    console.log(this._quotes$.value);
+    return (
+      this._quotes$.value.find((quote) => quote.stockSymbol === stockSymbol) !==
+      undefined
+    );
   }
 
   removeQuoteByStockSymbol(stockSymbol: string): void {

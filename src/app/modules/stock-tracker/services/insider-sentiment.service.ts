@@ -1,15 +1,13 @@
-import { NotificationService } from './notificiation.service';
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { InsiderSentimentResult } from 'src/app/modules/stock-tracker/models';
-import { HttpErrorResponse } from '@angular/common/http';
 import { FinnhubService } from './finnhub.service';
+import { NotificationService } from '@shared/services/notification.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class InsiderSentimentService {
   constructor(
     private _finnhubService: FinnhubService,

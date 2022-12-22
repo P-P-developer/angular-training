@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { MonthHelperService } from '@shared/services';
 import {
-  CompanyDetailsResult,
+  CompanyStockDetailsResult,
   CompanyQuote,
   InsiderSentimentResult,
 } from 'src/app/modules/stock-tracker/models';
+import { environment } from './../../../../environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FinnhubService {
   constructor(
     private _monthHelper: MonthHelperService,
@@ -18,23 +18,22 @@ export class FinnhubService {
   ) {}
 
   configUrl = 'https://finnhub.io/api/v1/';
-  token = '&token=bu4f8kn48v6uehqi3cqg';
+  token = `&token=${environment.token}`;
 
-  // Search Asset
-  searchAssets(search: string): Observable<CompanyDetailsResult> {
-    return this._http.get<CompanyDetailsResult>(
-      this.configUrl + 'search?q=' + search + this.token
+  getCompanyStockDetailsByStockSymbol(
+    search: string
+  ): Observable<CompanyStockDetailsResult> {
+    return this._http.get<CompanyStockDetailsResult>(
+      `${this.configUrl}search?q=${search}${this.token}`
     );
   }
 
-  // Company quote
   getQuote(symbol: string): Observable<CompanyQuote> {
     return this._http.get<CompanyQuote>(
-      this.configUrl + 'quote?symbol=' + symbol + this.token
+      `${this.configUrl}quote?symbol=${symbol}${this.token}`
     );
   }
 
-  // Insider Sentiment
   getInsiderSentimentFromLastThreeMonths(
     symbol: string
   ): Observable<InsiderSentimentResult> {
@@ -48,14 +47,7 @@ export class FinnhubService {
       now.getMonth()
     );
     return this._http.get<InsiderSentimentResult>(
-      this.configUrl +
-        'stock/insider-sentiment?symbol=' +
-        symbol +
-        '&from=' +
-        firstMonth +
-        '&to=' +
-        lastMonth +
-        this.token
+      `${this.configUrl}stock/insider-sentiment?symbol=${symbol}&from=${firstMonth}&to=${lastMonth}${this.token}`
     );
   }
 }

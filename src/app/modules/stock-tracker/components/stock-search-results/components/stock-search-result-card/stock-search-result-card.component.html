@@ -1,6 +1,8 @@
 <mat-card>
   <mat-card-title
-    ><st-company-details [companyDetails]="companyDetails"></st-company-details
+    ><st-company-details
+      [CompanyStockDetails]="CompanyStockDetails"
+    ></st-company-details
   ></mat-card-title>
 
   <ng-template [ngIf]="companyQuote" [ngIfElse]="noDetailsToDisplay">
@@ -14,11 +16,11 @@
   </ng-template>
 
   <st-social-sentiment-details-button
-    [stockSymbol]="companyDetails.symbol"
+    [stockSymbol]="CompanyStockDetails.symbol"
   ></st-social-sentiment-details-button>
 
   <st-remove-search-result-card-button
-    [stockSymbol]="companyDetails.symbol"
+    [stockSymbol]="CompanyStockDetails.symbol"
     (onRemoveStockCardClick)="removeStockCard()"
   ></st-remove-search-result-card-button>
 </mat-card>

@@ -22,7 +22,6 @@ import { RemoveSearchResultCardButtonComponent } from './components/stock-search
 import { SentimentDetailsCardComponent } from './components/sentiment-details-card/sentiment-details-card.component';
 import { StockTrackerComponent } from './stock-tracker.component';
 import { ArrowComponent } from './shared-components/arrow/arrow.component';
-import { NoDetailsComponent } from 'src/app/modules/stock-tracker/shared-components/no-details/no-details.component';
 import { SentimentDetailsDataComponent } from './components/sentiment-details-card/components/sentiment-details-data/sentiment-details-data.component';
 import { BackButtonComponent } from './components/sentiment-details-card/components/back-button/back-button.component';
 import { CompanyStockDetailsComponent } from './shared-components/company-details/company-details.component';
@@ -51,7 +50,6 @@ import { StockTrackerRoutingModule } from './stock-tracker-routing.module';
     ArrowComponent,
     BackButtonComponent,
     SentimentDetailsDataComponent,
-    NoDetailsComponent,
   ],
   imports: [
     StockTrackerRoutingModule,

@@ -10,7 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoadingInterceptor } from './loading.interceptor';
-import { SpinnerComponent } from '@shared/components/spinner/spinner.component';
+import { SpinnerComponent } from '@shared/components';
 
 @NgModule({
   declarations: [AppComponent, SpinnerComponent],

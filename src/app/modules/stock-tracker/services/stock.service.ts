@@ -56,6 +56,7 @@ export class StockService {
     this._assetService.assetsFound$
       .pipe(takeUntil(this._unsubscribe))
       .subscribe(() => {
+        // Order stock symbols cards by the string array in the local storage
         this._assetService.orderAssetsByStockSymbolList(this._stockSymbolList);
 
         // If the current stock symbol was already added/loaded then skip this part
@@ -100,6 +101,8 @@ export class StockService {
       localStorage.getItem(LocalStorageKeys.stockSymbolList) ?? '[]'
     );
 
+    // When the new stocksymbol doesnt exist in the string array of the local storage item
+    // then add it into that array
     if (stockSymbolList.indexOf(stockSymbol) === -1) {
       stockSymbolList.push(stockSymbol);
     }

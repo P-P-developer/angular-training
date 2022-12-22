@@ -8,6 +8,7 @@ import { CompanyQuote } from 'src/app/modules/stock-tracker/models';
   styleUrls: ['./company-quote-details.component.scss'],
 })
 export class CompanyQuoteDetailsComponent {
+  currencyFormat = 'USD';
   @Input() companyQuote!: CompanyQuote;
 
   constructor(public numberHelperService: NumberHelperService) {}

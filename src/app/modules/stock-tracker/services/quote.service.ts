@@ -39,7 +39,6 @@ export class QuoteService {
   }
 
   quoteAlreadyLoaded(stockSymbol: string): boolean {
-    console.log(this._quotes$.value);
     return (
       this._quotes$.value.find((quote) => quote.stockSymbol === stockSymbol) !==
       undefined

@@ -3,11 +3,11 @@
   {{ numberHelperService.addPlusWhenNumberIsPositiv(companyQuote.dp)
   }}{{ companyQuote.dp | percent : "1.2-2" }}
 </p>
-<p>Current price: {{ companyQuote.c | currency : "USD" }}</p>
-<p>Opening price: {{ companyQuote.o | currency : "USD" }}</p>
+<p>Current price: {{ companyQuote.c | currency : currencyFormat }}</p>
+<p>Opening price: {{ companyQuote.o | currency : currencyFormat }}</p>
 <p>
   High price:
-  {{ companyQuote.h | currency : "USD" }}
+  {{ companyQuote.h | currency : currencyFormat }}
 </p>
 
 <st-arrow [propertyToCheck]="companyQuote.dp"></st-arrow>

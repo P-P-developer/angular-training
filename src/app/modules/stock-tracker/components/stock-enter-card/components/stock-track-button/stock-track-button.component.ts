@@ -10,10 +10,10 @@ import { LoaderService } from '@shared/services';
 export class StockTrackButtonComponent {
   constructor(public loaderService: LoaderService) {}
 
-  @Input() isInValidStockSymbol: boolean = true;
-  @Output() onSearchButtonClick = new EventEmitter();
+  @Input() onIsInValidStockSymbol = true;
+  @Output() searchButtonClick = new EventEmitter();
 
   saveStockSymbolToLocalStorage(): void {
-    this.onSearchButtonClick.emit();
+    this.searchButtonClick.emit();
   }
 }

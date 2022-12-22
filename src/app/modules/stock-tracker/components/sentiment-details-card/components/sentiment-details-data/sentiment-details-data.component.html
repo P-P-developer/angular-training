@@ -34,6 +34,8 @@
   </div>
 </div>
 
-<ng-template [ngIf]="!(insiderSentimentService.insiderSentiments$ | async)">
+<ng-template
+  [ngIf]="(insiderSentimentService.insiderSentiments$ | async) === undefined"
+>
   <p>No sentiment data to show</p>
 </ng-template>

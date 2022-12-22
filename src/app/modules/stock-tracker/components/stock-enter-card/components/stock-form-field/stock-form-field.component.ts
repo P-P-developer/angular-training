@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./stock-form-field.component.scss'],
 })
 export class StockFormFieldComponent {
-  @Output() onStockSymbolFormControlChange = new EventEmitter<FormControl>();
+  @Output() stockSymbolFormControlChange = new EventEmitter<FormControl>();
 
   stockSymbolFormControl = new FormControl(undefined, [
     Validators.required,
@@ -18,7 +18,7 @@ export class StockFormFieldComponent {
   getErrorMessage(): string {
     // If there are any errors, then return a errorMessage and emit the formcontrol to the parent
     if (this.stockSymbolFormControl.errors != null) {
-      this.onStockSymbolFormControlChange.emit(this.stockSymbolFormControl);
+      this.stockSymbolFormControlChange.emit(this.stockSymbolFormControl);
       return 'Please enter a stock symbol that is between 1 to 5 letters';
     }
     return '';

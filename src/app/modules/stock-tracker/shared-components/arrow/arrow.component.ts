@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./arrow.component.scss'],
 })
 export class ArrowComponent {
-  @Input() propertyToCheck: number = 0;
+  @Input() propertyToCheck = 0;
 }

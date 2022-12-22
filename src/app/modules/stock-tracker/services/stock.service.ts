@@ -56,6 +56,7 @@ export class StockService {
     this._assetService.assetsFound$
       .pipe(takeUntil(this._unsubscribe))
       .subscribe(() => {
+        console.log('test');
         this._assetService.orderAssetsByStockSymbolList(this._stockSymbolList);
 
         // If the current stock symbol was already added/loaded then skip this part

@@ -7,7 +7,7 @@ import { LoaderService } from '@shared/services';
   styleUrls: ['./social-sentiment-details-button.component.scss'],
 })
 export class SocialSentimentDetailsButtonComponent {
-  @Input() stockSymbol: string = '';
+  @Input() onStockSymbol = '';
 
   constructor(public loaderService: LoaderService) {}
 }

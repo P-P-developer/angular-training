@@ -49,7 +49,7 @@ export class AssetService {
         },
         (error: HttpErrorResponse) => {
           this._notificationService.showNotification(
-            `Could not get assets for the stock symbol ${stockSymbol}! Reason \"${error.message}\"`
+            `Could not get assets for the stock symbol ${stockSymbol}! Reason "${error.message}"`
           );
         }
       );
@@ -66,7 +66,7 @@ export class AssetService {
   }
 
   orderAssetsByStockSymbolList(stockSymbolList: string[]): void {
-    var sortedResults = this._assets$.value.sort(
+    const sortedResults = this._assets$.value.sort(
       (asset1, asset2) =>
         stockSymbolList.indexOf(asset1.symbol) -
         stockSymbolList.indexOf(asset2.symbol)

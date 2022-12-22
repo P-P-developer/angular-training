@@ -1,13 +1,13 @@
 <mat-card>
   <mat-card-title
     ><st-company-details
-      [CompanyStockDetails]="CompanyStockDetails"
+      [CompanyStockDetails]="onCompanyStockDetails"
     ></st-company-details
   ></mat-card-title>
 
-  <ng-template [ngIf]="companyQuote" [ngIfElse]="noDetailsToDisplay">
+  <ng-template [ngIf]="onCompanyQuote" [ngIfElse]="noDetailsToDisplay">
     <st-company-quote-details
-      [companyQuote]="companyQuote"
+      [companyQuote]="onCompanyQuote"
     ></st-company-quote-details>
   </ng-template>
 
@@ -16,11 +16,11 @@
   </ng-template>
 
   <st-social-sentiment-details-button
-    [stockSymbol]="CompanyStockDetails.symbol"
+    [onStockSymbol]="onCompanyStockDetails.symbol"
   ></st-social-sentiment-details-button>
 
   <st-remove-search-result-card-button
-    [stockSymbol]="CompanyStockDetails.symbol"
-    (onRemoveStockCardClick)="removeStockCard()"
+    [onStockSymbol]="onCompanyStockDetails.symbol"
+    (removeStockCardButtonClick)="removeStockCard()"
   ></st-remove-search-result-card-button>
 </mat-card>

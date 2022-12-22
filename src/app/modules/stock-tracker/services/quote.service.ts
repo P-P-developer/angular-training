@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { CompanyQuote } from 'src/app/modules/stock-tracker/models';
@@ -32,7 +32,7 @@ export class QuoteService {
         },
         (error: HttpErrorResponse) => {
           this._notificationService.showNotification(
-            `Could not get quotes for the stock symbol ${stockSymbol}! Reason \"${error.message}\"`
+            `Could not get quotes for the stock symbol ${stockSymbol}! Reason "${error.message}"`
           );
         }
       );

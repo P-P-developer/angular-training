@@ -6,13 +6,13 @@
     }}</mat-card-subtitle>
   </mat-card-title-group>
   <st-stock-form-field
-    (onStockSymbolFormControlChange)="receiveFormControl($event)"
+    (stockSymbolFormControlChange)="receiveFormControl($event)"
   ></st-stock-form-field>
   <st-stock-track-button
-    [isInValidStockSymbol]="
-      stockSymbolForm.value == undefined || stockSymbolForm.invalid
+    [onIsInValidStockSymbol]="
+      stockSymbolForm.value === undefined || stockSymbolForm.invalid
     "
-    (onSearchButtonClick)="
+    (searchButtonClick)="
       this.stockService.searchStockByStockSymbol(stockSymbolForm.value!)
     "
   ></st-stock-track-button>

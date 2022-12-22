@@ -7,12 +7,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./remove-search-result-card-button.component.scss'],
 })
 export class RemoveSearchResultCardButtonComponent {
-  @Input() stockSymbol: string = '';
-  @Output() onRemoveStockCardClick = new EventEmitter();
+  @Input() onStockSymbol = '';
+  @Output() removeStockCardButtonClick = new EventEmitter();
 
   constructor(public loaderService: LoaderService) {}
 
   removeStockCard(): void {
-    this.onRemoveStockCardClick.emit();
+    this.removeStockCardButtonClick.emit();
   }
 }

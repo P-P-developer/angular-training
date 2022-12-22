@@ -12,18 +12,18 @@ import { StockService } from 'src/app/modules/stock-tracker/services';
 })
 export class StockSearchResultCardComponent {
   constructor(public stockService: StockService) {}
-  @Input() CompanyStockDetails: CompanyStockDetails = {
+  @Input() onCompanyStockDetails: CompanyStockDetails = {
     description: '',
     displaySymbol: '',
     symbol: '',
     type: '',
   };
 
-  @Input() companyQuote: CompanyQuote | undefined = undefined;
+  @Input() onCompanyQuote: CompanyQuote | undefined = undefined;
 
-  @Output() onRemoveStockCardButtonClick = new EventEmitter();
+  @Output() removeStockCardButtonClick = new EventEmitter();
 
   removeStockCard(): void {
-    this.onRemoveStockCardButtonClick.emit();
+    this.removeStockCardButtonClick.emit();
   }
 }

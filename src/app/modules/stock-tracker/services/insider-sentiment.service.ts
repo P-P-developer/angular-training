@@ -43,7 +43,7 @@ export class InsiderSentimentService {
         },
         (error: HttpErrorResponse) => {
           this._notificationService.showNotification(
-            `Could not get insider sentiment details for the stock symbol ${stockSymbol}! Reason \"${error.message}\"`
+            `Could not get insider sentiment details for the stock symbol ${stockSymbol}! Reason "${error.message}"`
           );
         }
       );
@@ -59,10 +59,10 @@ export class InsiderSentimentService {
   ): InsiderSentimentResult {
     // Check if the API doesnt return data from the last three months
     if (insiderSentimentsResult && insiderSentimentsResult.data.length < 3) {
-      var lastElement =
+      const lastElement =
         insiderSentimentsResult.data[insiderSentimentsResult.data.length - 1];
 
-      var currentMonth = lastElement.month;
+      let currentMonth = lastElement.month ?? 0;
 
       // Add empty data for missing months
       for (
@@ -72,12 +72,12 @@ export class InsiderSentimentService {
       ) {
         insiderSentimentsResult.data.push({
           change: undefined,
-          month: currentMonth! + 1,
+          month: currentMonth + 1,
           mspr: undefined,
           symbol: stockSymbol,
           year: undefined,
         });
-        currentMonth!++;
+        currentMonth++;
       }
     }
     return insiderSentimentsResult;

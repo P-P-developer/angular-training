@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class MonthHelperService {
   private readonly datePipe: DatePipe = new DatePipe('en-US');
-  constructor() {}
 
   convertNumberToMonthName(monthNumber: number): string {
     switch (monthNumber) {
